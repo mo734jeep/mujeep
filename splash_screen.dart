@@ -42,3 +42,22 @@ class _SplashScreenState extends State<SplashScreen> {
             ],
           ),
         ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(
+                    colors: [neon.withOpacity(0.2), Colors.transparent],
+                    radius: 0.85,
+                  ),
+                ),
+                child: Icon(
+                  Icons.security,
+                  size: 100,
+                  color: neon,
+                ),
+              ),
