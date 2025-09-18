@@ -61,3 +61,21 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: neon,
                 ),
               ),
+              const SizedBox(height: 20),
+              Text(
+                "Password Manager Lite",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: neon,
+                  letterSpacing: 1.5,
+                  fontFamily: 'Monospace',
+                  shadows: [
+                    Shadow(
+                      blurRadius: 20,
+                      color: neon.withOpacity(0.6),
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
+              ),
