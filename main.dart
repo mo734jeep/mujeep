@@ -120,3 +120,66 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+                child: Column(
+                  children: [
+                    Icon(Icons.lock_outline, size: 56, color: neon),
+                    const SizedBox(height: 12),
+                    const Text(
+                      "لا يوجد حسابات بعد",
+                      style: TextStyle(color: Colors.white70, fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
+            : ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+          itemCount: accounts.length,
+          itemBuilder: (context, index) {
+            final account = accounts[index];
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                color: panel,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: neon.withOpacity(0.08)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                  BoxShadow(
+                    color: neon.withOpacity(0.03),
+                    blurRadius: 30,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: ListTile(
+                leading: CircleAvatar(
+                  radius: 22,
+                  backgroundColor: glow,
+                  child: Icon(Icons.lock, color: neon),
+                ),
+                title: Text(
+                  account['account'] ?? '',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                subtitle: Text(
+                  account['username'] ?? '',
+                  style: const TextStyle(color: Colors.white70),
+                ),
+                trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.white70),
+                onTap: () async {
+                  final shouldDelete = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AccountDetailsPage(account: accounts[index]),
+                    ),
+                  );
