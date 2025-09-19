@@ -69,3 +69,40 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
               ],
             ),
             // خيارات
+            CheckboxListTile(
+              title: const Text("تضمين الأرقام"),
+              value: includeNumbers,
+              onChanged: (value) {
+                setState(() {
+                  includeNumbers = value ?? true;
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: const Text("تضمين الرموز"),
+              value: includeSymbols,
+              onChanged: (value) {
+                setState(() {
+                  includeSymbols = value ?? true;
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: const Text("أحرف كبيرة"),
+              value: includeUppercase,
+              onChanged: (value) {
+                setState(() {
+                  includeUppercase = value ?? true;
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+
+            // كلمة المرور الناتجة
+            SelectableText(
+              generatedPassword.isEmpty ? "—" : generatedPassword,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
