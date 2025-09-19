@@ -87,3 +87,31 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
                 });
               },
             ),
+            CheckboxListTile(
+              title: const Text("أحرف كبيرة"),
+              value: includeUppercase,
+              onChanged: (value) {
+                setState(() {
+                  includeUppercase = value ?? true;
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+
+            // كلمة المرور الناتجة
+            SelectableText(
+              generatedPassword.isEmpty ? "—" : generatedPassword,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // زر التوليد
+            ElevatedButton.icon(
+              onPressed: generatePassword,
+              icon: const Icon(Icons.refresh),
+              label: const Text("توليد كلمة مرور"),
+            ),
