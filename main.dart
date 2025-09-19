@@ -49,3 +49,53 @@ class PasswordManagerApp extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
       ),
+      home: const SplashScreen(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Map<String, String>> accounts = [];
+
+  @override
+  Widget build(BuildContext context) {
+    // Colors consistent with theme
+    final Color neon = const Color(0xFF00F39A);
+    final Color panel = const Color(0xFF071826);
+    final Color glow = const Color(0xFF07212A);
+
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.security, size: 20, color: Colors.white70),
+            const SizedBox(width: 8),
+            const Text("Password Manager Lite"),
+            const SizedBox(width: 8),
+          ],
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              const Color(0xFF04121A),
+              const Color(0xFF071826),
+              const Color(0xFF081E2A),
+            ],
+          ),
+        ),
