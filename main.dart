@@ -183,3 +183,43 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => AccountDetailsPage(account: accounts[index]),
                     ),
                   );
+
+                  if (shouldDelete == true) {
+                    setState(() {
+                      accounts.removeAt(index);
+                    });
+                  }
+                },
+              ),
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final newAccount = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddAccountPage()),
+          );
+
+          if (newAccount != null) {
+            setState(() {
+              accounts.add(newAccount);
+            });
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            gradient: LinearGradient(colors: [neon, neon.withOpacity(0.8)]),
+            boxShadow: [
+              BoxShadow(color: neon.withOpacity(0.25), blurRadius: 20, spreadRadius: 1),
+            ],
+          ),
+          child: const Icon(Icons.add, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
