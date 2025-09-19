@@ -37,3 +37,53 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
       generatedPassword = password;
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("توليد كلمة مرور"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            // طول كلمة المرور
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("الطول:"),
+                Slider(
+                  value: passwordLength.toDouble(),
+                  min: 6,
+                  max: 32,
+                  divisions: 26,
+                  label: "$passwordLength",
+                  onChanged: (value) {
+                    setState(() {
+                      passwordLength = value.toInt();
+                    });
+                  },
+                ),
+                Text("$passwordLength"),
+              ],
+            ),
+            // خيارات
+            CheckboxListTile(
+              title: const Text("تضمين الأرقام"),
+              value: includeNumbers,
+              onChanged: (value) {
+                setState(() {
+                  includeNumbers = value ?? true;
+                });
+              },
+            ),
+            CheckboxListTile(
+              title: const Text("تضمين الرموز"),
+              value: includeSymbols,
+              onChanged: (value) {
+                setState(() {
+                  includeSymbols = value ?? true;
+                });
+              },
+            ),
