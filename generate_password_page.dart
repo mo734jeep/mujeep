@@ -106,3 +106,31 @@ class _GeneratePasswordPageState extends State<GeneratePasswordPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
+            const SizedBox(height: 20),
+
+            // زر التوليد
+            ElevatedButton.icon(
+              onPressed: generatePassword,
+              icon: const Icon(Icons.refresh),
+              label: const Text("توليد كلمة مرور"),
+            ),
+
+            const SizedBox(height: 20),
+
+            // زر الرجوع مع الكلمة
+            ElevatedButton.icon(
+              onPressed: generatedPassword.isNotEmpty
+                  ? () {
+                Navigator.pop(context, generatedPassword);
+              }
+                  : null,
+              icon: const Icon(Icons.check),
+              label: const Text("استخدام هذه الكلمة"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
