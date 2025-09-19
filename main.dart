@@ -183,3 +183,21 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => AccountDetailsPage(account: accounts[index]),
                     ),
                   );
+
+                  if (shouldDelete == true) {
+                    setState(() {
+                      accounts.removeAt(index);
+                    });
+                  }
+                },
+              ),
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final newAccount = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddAccountPage()),
+          );
